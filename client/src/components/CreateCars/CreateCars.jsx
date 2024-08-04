@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateCars() {
   const [images, setImages] = useState();
@@ -7,6 +8,8 @@ export default function CreateCars() {
   const [price, setPrice] = useState("");
   const [color, setColor] = useState("");
   const [year, setYear] = useState("");
+
+  const navigate = useNavigate();
 
   const handleCreateCars = async () => {
     try {
@@ -29,6 +32,7 @@ export default function CreateCars() {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+      navigate("/");
     } catch (error) {
       console.error("Cars Error:", error.message);
     }

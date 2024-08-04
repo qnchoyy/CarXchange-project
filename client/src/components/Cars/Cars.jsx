@@ -5,13 +5,18 @@ import { Link } from "react-router-dom";
 
 export default function Cars() {
   const { cars, setCars, carsFilterValue } = useContext(CarsContext);
-
   useEffect(() => {
     (async () => {
       try {
         const response = await fetch("http://localhost:3030/jsonstore/cars");
         const result = await response.json();
-        const cars = Object.values(result);
+
+        // Extract cars and include the _id in each car object
+        const cars = Object.entries(result).map(([id, car]) => ({
+          ...car,
+          _id: id,
+        }));
+
         setCars(cars);
       } catch {
         console.log("Cars Error");
