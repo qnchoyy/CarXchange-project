@@ -1,0 +1,56 @@
+{
+  "c2d26a38-e823-4869-b467-d744e7115173": {
+    "images": "https://media.ed.edmunds-media.com/mercedes-benz/s-class/2024/oem/2024_mercedes-benz_s-class_sedan_amg-s-63-e-performance_fq_oem_1_1600.jpg",
+    "brand": "Mercedes-Benz",
+    "model": "Citan",
+    "color": "red",
+    "price": "10000$",
+    "year": 2010,
+    "_id": "c2d26a38-e823-4869-b467-d744e7115173"
+  },
+  "bbd758e0-1687-4c2e-938a-a8b282d71b72": {
+    "images": "https://www.bmw.bg/content/dam/bmw/common/all-models/m-series/series-overview/bmw-m-series-seo-overview-ms-04.jpg",
+    "brand": "BMW",
+    "model": "M4",
+    "color": "white",
+    "price": "50000$",
+    "year": 2020,
+    "_id": "bbd758e0-1687-4c2e-938a-a8b282d71b72"
+  },
+  "5e286107-6b02-4a07-a333-833b41726409": {
+    "images": "https://scene7.toyota.eu/is/image/toyotaeurope/01-CHR0016a_24?wid=1280&fit=fit,1&ts=0&resMode=sharp2&op_usm=1.75,0.3,2,0",
+    "brand": "Toyota",
+    "model": "RAV4",
+    "color": "gray",
+    "price": "15000$",
+    "year": 2015,
+    "_id": "5e286107-6b02-4a07-a333-833b41726409"
+  },
+  "20918dd8-f18c-4d84-82a1-1415ebbca140": {
+    "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTobUmzOqXDW_-YzLWCkUtpqbr8hqUSMFsq9Q&s",
+    "brand": "Mercedes-Benz",
+    "model": "GLA",
+    "color": "black",
+    "price": "35000$",
+    "year": 2021,
+    "_id": "20918dd8-f18c-4d84-82a1-1415ebbca140"
+  },
+  "93f3ccbe-43f1-4bea-b087-f1850191b008": {
+    "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXuvR5I4p9LSKINi2HZNiDSjQKPFjtX9mkSQ&s",
+    "brand": "Toyota",
+    "model": "Corolla",
+    "color": "blue",
+    "price": "18000$",
+    "year": 2019,
+    "_id": "93f3ccbe-43f1-4bea-b087-f1850191b008"
+  },
+  "46cb624a-89da-4279-9511-dedb6c5281e5": {
+    "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_NuJOphBrFOApxsBd3EGZO-Gwzq3vb-4aRA&s",
+    "brand": "BMW",
+    "model": "3 Series",
+    "color": "blue",
+    "price": "42000$",
+    "year": 2023,
+    "_id": "46cb624a-89da-4279-9511-dedb6c5281e5"
+  }
+}
