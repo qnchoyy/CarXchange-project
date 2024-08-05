@@ -1,12 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import { CarsContext } from "../../context/carsContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const { accessToken, setAccessToken } = useContext(CarsContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     if (!email || !password || !rePassword) {
@@ -34,6 +35,7 @@ export default function Register() {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+      navigate("/");
 
       const result = await response.json();
       setAccessToken(result.accessToken);

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { CarsContext } from "../../context/carsContext";
 import { Link, useNavigate } from "react-router-dom";
 

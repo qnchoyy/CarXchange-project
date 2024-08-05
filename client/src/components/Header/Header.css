@@ -1,8 +1,33 @@
 .header {
   display: flex;
-  justify-content: space-around;
-  padding-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
 }
 .logo {
   width: 150px;
+}
+.login-register-container {
+  display: flex;
+  align-items: center;
+}
+
+.create,
+.login-register-container a {
+  margin-right: 15px;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.create:hover,
+.login-register-container a:hover {
+  background-color: #f0f0f0;
+}
+
+.login-register-container a:last-child {
+  margin-right: 0;
 }

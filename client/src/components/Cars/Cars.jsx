@@ -11,7 +11,6 @@ export default function Cars() {
         const response = await fetch("http://localhost:3030/jsonstore/cars");
         const result = await response.json();
 
-        // Extract cars and include the _id in each car object
         const cars = Object.entries(result).map(([id, car]) => ({
           ...car,
           _id: id,
