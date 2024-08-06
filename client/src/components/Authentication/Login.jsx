@@ -10,6 +10,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    if (!email || !password) {
+      alert("All fields are required.");
+      return;
+    }
     try {
       const response = await fetch("http://localhost:3030/users/login", {
         method: "POST",

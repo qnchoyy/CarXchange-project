@@ -8,6 +8,7 @@ export default function CarsListItem({
   price,
   year,
   images,
+  logo,
 }) {
   return (
     <>

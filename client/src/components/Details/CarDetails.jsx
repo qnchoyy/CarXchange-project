@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CarsContext } from "../../context/carsContext";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,6 +13,14 @@ export default function CarDetails() {
   const navigate = useNavigate();
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const { accessToken, setAccessToken } = useContext(CarsContext);
+
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLikeClick = () => {
+    setLiked((prevLiked) => !prevLiked);
+    setLikeCount((prevCount) => (liked ? prevCount - 1 : prevCount + 1));
+  };
 
   const handleDelete = async () => {
     try {
@@ -58,7 +66,7 @@ export default function CarDetails() {
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               {currentCar.brand} {currentCar.model}
             </h1>
-            <p className="text-gray-500 text-sm mb-4">{currentCar.price}</p>
+            <p className="text-gray-500 text-sm mb-4"></p>
 
             {accessToken && (
               <div className="flex items-center space-x-4 mb-6">
@@ -74,14 +82,26 @@ export default function CarDetails() {
                 >
                   Delete
                 </button>
+                <div>
+                  <button className="like-btn" onClick={handleLikeClick}>
+                    {likeCount > 0 ? "❤️" : "👍 Like"}
+                  </button>
+                </div>
               </div>
             )}
+
             <div>
               <h2 className="text-lg font-semibold mb-2">Details</h2>
               <ul className="list-disc list-inside text-gray-600 space-y-1">
-                <li>{currentCar.year}</li>
-                <li>{currentCar.price}</li>
+                <li>Year: {currentCar.year}</li>
+                <li>Price: {currentCar.price}$ </li>
+                <li>Color: {currentCar.color} </li>
               </ul>
+              <p className="count">
+                {likeCount > 0
+                  ? `${likeCount}  ${likeCount === 1 ? "like" : "likes"}`
+                  : "No likes yet"}
+              </p>
             </div>
           </div>
         </div>
