@@ -10,6 +10,7 @@ import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
 import CreateCars from "./components/CreateCars/CreateCars";
 import Page404 from "./components/404page/Page404";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -63,6 +64,7 @@ function App() {
           />
           <Route path="/*" element={<Page404 />} />
         </Routes>
+        <Footer />
       </CarsContext.Provider>
     </>
   );
