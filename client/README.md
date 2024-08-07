@@ -1,8 +1,13 @@
-# React + Vite
+1. Functionality
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- GET cars
+- Create cars
+- Edit cars (logged-in user)
+- Delete cars (logged-in user)
+- Like cars (logged-in user)
+- Login
+- Register
 
-Currently, two official plugins are available:
+2. Deploy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- https://carxchangeproject.netlify.app/ (works only when the server is started)
