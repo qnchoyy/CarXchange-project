@@ -34,6 +34,7 @@ export default function Register() {
 
       if (response.status === 409) {
         alert("Email already exists.");
+        return;
       }
 
       if (!response.ok) {

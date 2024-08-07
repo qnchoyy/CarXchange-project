@@ -11,7 +11,7 @@ export default function CarDetails() {
   const currentCar = cars?.find((car) => car._id === pathName);
   const navigate = useNavigate();
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const { accessToken, userId } = useContext(CarsContext);
+  const { accessToken, userId, setCarsFilterValue } = useContext(CarsContext);
 
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -73,6 +73,7 @@ export default function CarDetails() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       navigate("/");
+      setCarsFilterValue("");
     } catch (error) {
       console.error("Cars Error:", error.message);
     }

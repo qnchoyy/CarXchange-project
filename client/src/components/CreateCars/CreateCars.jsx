@@ -12,6 +12,11 @@ export default function CreateCars() {
   const navigate = useNavigate();
 
   const handleCreateCars = async () => {
+    if (!brand || !model || !price || !color || !year) {
+      alert("All fields are required.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3030/jsonstore/cars", {
         method: "POST",
