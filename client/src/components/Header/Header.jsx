@@ -1,5 +1,5 @@
 import "./Header.css";
-import logo from "../../images/logo.svg";
+import logo from "../../images/image.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CarsContext } from "../../context/carsContext";
