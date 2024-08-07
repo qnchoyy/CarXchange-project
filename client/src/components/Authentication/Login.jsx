@@ -3,7 +3,8 @@ import { CarsContext } from "../../context/carsContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { accessToken, setAccessToken } = useContext(CarsContext);
+  const { accessToken, setAccessToken, userId, setUserId } =
+    useContext(CarsContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,6 +15,7 @@ export default function Login() {
       alert("All fields are required.");
       return;
     }
+
     try {
       const response = await fetch("http://localhost:3030/users/login", {
         method: "POST",
@@ -25,6 +27,9 @@ export default function Login() {
           password,
         }),
       });
+      if (response.status === 403) {
+        alert("Wrong email or password");
+      }
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -32,6 +37,7 @@ export default function Login() {
 
       const result = await response.json();
       setAccessToken(result.accessToken);
+      setUserId(result._id);
       navigate("/create");
     } catch (error) {
       console.error("Cars Error:", error.message);

@@ -36,7 +36,7 @@ export default function Header() {
           <img className="logo" src={logo} alt="" />
         </Link>
         <div className="create">
-          <Link to="/create">Create</Link>
+          <Link to="/create">Create car ad</Link>
         </div>
         <div className="login-register-container">
           {accessToken ? (

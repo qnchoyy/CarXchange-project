@@ -1,9 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { CarsContext } from "../../context/carsContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
-  const { accessToken, setAccessToken } = useContext(CarsContext);
+  const { setAccessToken, setUserId } = useContext(CarsContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
@@ -32,6 +32,10 @@ export default function Register() {
         }),
       });
 
+      if (response.status === 409) {
+        alert("Email already exists.");
+      }
+
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -39,6 +43,7 @@ export default function Register() {
 
       const result = await response.json();
       setAccessToken(result.accessToken);
+      setUserId(result._id);
     } catch (error) {
       console.error("Cars Error:", error.message);
     }

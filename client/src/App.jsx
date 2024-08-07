@@ -14,6 +14,7 @@ function App() {
   const [cars, setCars] = useState([]);
   const [carsFilterValue, setCarsFilterValue] = useState("");
   const [accessToken, setAccessToken] = useState("");
+  const [userId, setUserId] = useState("");
 
   const contextObject = {
     cars,
@@ -22,6 +23,8 @@ function App() {
     setCarsFilterValue,
     accessToken,
     setAccessToken,
+    userId,
+    setUserId,
   };
 
   function ProtectedRoute({ children }) {
@@ -46,7 +49,14 @@ function App() {
               </>
             }
           />
-          <Route path="/:brand" element={<CarDetails />} />
+          <Route
+            path="/:brand"
+            element={
+              <ProtectedRoute>
+                <CarDetails />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route

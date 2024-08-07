@@ -36,8 +36,8 @@ export default function Cars() {
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {cars.length > 0 ? (
             filterdCars.map((car) => (
-              <Link to={`/${car._id}`}>
-                <CarsListItem key={car._id} {...car} />
+              <Link key={car._id} to={`/${car._id}`}>
+                <CarsListItem {...car} />
               </Link>
             ))
           ) : (

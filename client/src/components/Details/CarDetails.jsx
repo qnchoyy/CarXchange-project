@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { CarsContext } from "../../context/carsContext";
-
 import { useLocation, useNavigate } from "react-router-dom";
 import EditDetails from "./EditDetails";
 import "./CarDetails.css";
@@ -12,14 +11,50 @@ export default function CarDetails() {
   const currentCar = cars?.find((car) => car._id === pathName);
   const navigate = useNavigate();
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const { accessToken, setAccessToken } = useContext(CarsContext);
+  const { accessToken, userId } = useContext(CarsContext);
 
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
+  useEffect(() => {
+    if (currentCar) {
+      const globalLikeKey = `globalLikes_${currentCar._id}`;
+
+      const storedGlobalLikeCount = localStorage.getItem(globalLikeKey);
+      setLikeCount(
+        storedGlobalLikeCount ? parseInt(storedGlobalLikeCount, 10) : 0
+      );
+
+      if (userId) {
+        const userCarKey = `${userId}_${currentCar._id}`;
+
+        const storedLikeStatus = localStorage.getItem(userCarKey);
+
+        if (storedLikeStatus) {
+          const { liked } = JSON.parse(storedLikeStatus);
+          setLiked(liked);
+        }
+      }
+    }
+  }, [currentCar, userId]);
+
   const handleLikeClick = () => {
-    setLiked((prevLiked) => !prevLiked);
-    setLikeCount((prevCount) => (liked ? prevCount - 1 : prevCount + 1));
+    if (!userId) {
+      console.error("User not logged in or userId not found.");
+      return;
+    }
+
+    const newLikedState = !liked;
+    setLiked(newLikedState);
+
+    const newLikeCount = newLikedState ? likeCount + 1 : likeCount - 1;
+    setLikeCount(newLikeCount);
+
+    const userCarKey = `${userId}_${currentCar._id}`;
+    localStorage.setItem(userCarKey, JSON.stringify({ liked: newLikedState }));
+
+    const globalLikeKey = `globalLikes_${currentCar._id}`;
+    localStorage.setItem(globalLikeKey, newLikeCount.toString());
   };
 
   const handleDelete = async () => {
@@ -42,6 +77,7 @@ export default function CarDetails() {
       console.error("Cars Error:", error.message);
     }
   };
+
   return (
     <>
       <EditDetails
@@ -51,13 +87,9 @@ export default function CarDetails() {
       />
       <div className="mt-24 flex items-center justify-center p-4">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl mx-auto flex flex-col md:flex-row">
-          {/* Icon Grid Section */}
-
           <div className="flex-1 mb-8 md:mb-0 md:mr-8 relative  rounded-lg p-8">
             <img src={currentCar.images} style={{ width: "100%" }} alt="img" />
-            {/* Placeholder icons */}
           </div>
-          {/* Text and Buttons Section */}
           <div className="flex-1">
             <div className="flex items-center mb-2">
               <span className="text-yellow-400 mr-1">★★★★☆</span>
@@ -84,7 +116,7 @@ export default function CarDetails() {
                 </button>
                 <div>
                   <button className="like-btn" onClick={handleLikeClick}>
-                    {likeCount > 0 ? "❤️" : "👍 Like"}
+                    {liked ? "❤️" : "👍 Like"}
                   </button>
                 </div>
               </div>
