@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
 import CreateCars from "./components/CreateCars/CreateCars";
+import Page404 from "./components/404page/Page404";
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -67,6 +68,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/*" element={<Page404 />} />
         </Routes>
       </CarsContext.Provider>
     </>
