@@ -40,7 +40,6 @@ export default function CarDetails() {
 
   const handleLikeClick = () => {
     if (!userId) {
-      console.error("User not logged in or userId not found.");
       return;
     }
 

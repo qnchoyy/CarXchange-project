@@ -50,14 +50,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/:brand"
-            element={
-              <ProtectedRoute>
-                <CarDetails />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/:brand" element={<CarDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
