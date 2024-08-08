@@ -1,8 +1,7 @@
 import { CarsContext } from "../../context/carsContext";
 import { useContext } from "react";
 export default function CarBrands() {
-  const { cars, setCars, carsFilterValue, setCarsFilterValue } =
-    useContext(CarsContext);
+  const { cars, setCarsFilterValue } = useContext(CarsContext);
 
   const uniqueCars = cars.filter(
     (item, index, self) =>
