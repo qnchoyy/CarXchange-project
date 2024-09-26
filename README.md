@@ -2,4 +2,4 @@
 
 2. run the server / node ./server.js
 
-3. run the ciend / npm run dev
+3. run the client / npm run dev
